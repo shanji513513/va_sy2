@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>教师端</title>
+    <link href="__STATIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__STATIC__/css/bootstrap-maizi.css" rel="stylesheet">
+    <link href="__STATIC__/css/common.css" rel="stylesheet">
+</head>
+<body>
+<!--顶部导航-->
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!--小屏幕导航按钮和logo-->
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="cindex.html" class="navbar-brand">请假帮</a><span class="nnnn"> nnnnnnn</span>
+            </div>
+            <!--小屏幕导航按钮和logo-->
+
+            <!--导航-->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    {include file="public/top"/}
+                    <!--<li><a href="#course">最新课程</a></li>-->
+                    <!--<li><a href="#app">移动APP</a></li>-->
+                    <!--<li><a href="#contact">联系我们</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="container-fluid " style="margin-top: 20%">
+    <span>增加其他管理人员</span>
+    <form action="{:url('classite/add')}" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">账号</label>
+            <div class="col-sm-10">
+                <input name="zhanghao" type="text" class="form-control" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">备注</label>
+            <div class="col-sm-10">
+                <input name="beizhu" type="text" class="form-control" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+                <input name="pwd" type="text" class="form-control" >
+            </div>
+        </div>
+        <input name="tid" type="hidden" value="{$tid}" >
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">添加</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container-fluid " style="margin-bottom: 15%">
+    <span>其他管理员</span>
+
+    <table border="1">
+        <tr>
+            <th>#</th>
+            <th>账号</th>
+            <th>备注/th>
+        </tr>
+        {volist name="data" id="vo"}
+        <tr>
+            <td>{$vo.id}</td>
+            <td>{$vo.beizhu}</td>
+            <td>{$vo.pwd}</td>
+        </tr>
+        {/volist}
+
+    </table>
+
+</div>
+
+
+
+
+
+<script src="__STATIC__/js/jquery-1.11.0.min.js"></script>
+
+<script src="__STATIC__/js/butdaohang.js"></script>
+
+<script src="__STATIC__/js/carousel.js"></script>
+<script src="__STATIC__/js/bootstrap.js"></script>
+
+</body>
+</html>

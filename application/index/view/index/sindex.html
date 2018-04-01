@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>学生端</title>
+
+    <!--<link href="__STATIC__/css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="__STATIC__/css/bootstrap.min.css"/>
+
+    <link href="__STATIC__/css/bootstrap-maizi.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="__STATIC__/time/css/material.min.css"/>
+    <link href="__STATIC__/css/common.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="__STATIC__/time/css/bootstrap-material-datetimepicker.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/time/css/default.css">
+
+
+
+
+    <!--弹窗-->
+
+
+    <!--弹窗-->
+
+    <style type="text/css">
+        #editor-container {
+            height: 200px;
+        }
+    </style>
+    <!--[if IE]>
+    <script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+    <!--文本框样式-->
+
+</head>
+<body>
+<!--顶部导航-->
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!--小屏幕导航按钮和logo-->
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="cindex.html" class="navbar-brand">扎职学院</a><span class="nnnn"> vvv</span>
+            </div>
+            <!--小屏幕导航按钮和logo-->
+
+            <!--导航-->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#bbs">资助</a></li>
+                    <li><a href="{:url('loginout/loginout')}">退出系统</a></li>
+                    <!--<li><a href="#course">最新课程</a></li>-->
+                    <!--<li><a href="#app">移动APP</a></li>-->
+                    <!--<li><a href="#contact">联系我们</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--大屏轮播-->
+<div style="margin-bottom: 10px" id="slidershow" class="carousel slide s_11" data-ride="carousel">
+    <!-- 设置图片轮播的顺序 -->
+    <ol class="carousel-indicators">
+        <li class="active" data-target="#slidershow" data-slide-to="0"></li>
+        <li data-target="#slidershow" data-slide-to="1"></li>
+        <li data-target="#slidershow" data-slide-to="2"></li>
+    </ol>
+    <!-- 设置轮播图片 -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <a href="##"><img style="height: 200px;width: 300px"></a>
+            <div class="carousel-caption">
+                <h3>图片标题1</h3>
+                <p>描述内容1...</p>
+            </div>
+        </div>
+        <div class="item">
+            <a href="##"><img style="height: 200px;width: 300px"></a>
+            <div class="carousel-caption">
+                <h3>图片标题2</h3>
+                <p>描述内容2...</p>
+            </div>
+        </div>
+        <div class="item">
+            <a href="##"><img style="height: 200px;width: 300px"></a>
+            <div class="carousel-caption">
+                <h3>图片标题3</h3>
+                <p>描述内容3...</p>
+            </div>
+        </div>
+    </div>
+    <!-- 设置轮播图片控制器 -->
+    <a class="left carousel-control" href="#slidershow" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#slidershow" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
+
+<div class="container-fluid s_11" style="margin-bottom: 40px">
+    <form action="{:url('check/addva')}" method="post">
+
+        <div class="htmleaf-container">
+            <div class="container well">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>请假时间</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-control-wrapper">
+                                    <input type="text" id="date-start" class="form-control floating-label"
+                                        name="vastime"   placeholder="开始时间">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-control-wrapper">
+                                    <input type="text" id="date-end" class="form-control floating-label"
+                                        name="vaetime"   placeholder="结束时间">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!--假条编辑文本框区域-->
+        <div class="form-group" style="border:solid lightblue 1px;margin-right: 5%;margin-left: 5%">
+            <textarea  name="vadetail" class="form-control" rows="3" placeholder="请填详细填写你的请假缘由，以便老师详细了解请假原因！"></textarea>
+        </div>
+        <!--假条编辑文本框区域-->
+
+
+
+        <!--文本编辑器框输入区域 , 已经隐藏 如有需要可以去掉隐藏 样式即可-->
+        <div  style="display: none" class="htmleaf-container">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mt50">
+                        <div id="standalone-container">
+                            <div id="toolbar-container">
+					<span class="ql-formats">
+					<select class="ql-font"></select>
+					<select class="ql-size"></select>
+					</span>
+					<span class="ql-formats">
+					<button class="ql-bold"></button>
+					<button class="ql-italic"></button>
+					<button class="ql-underline"></button>
+					<button class="ql-strike"></button>
+					</span>
+					<span class="ql-formats">
+					<select class="ql-color"></select>
+					<select class="ql-background"></select>
+					</span>
+					<span class="ql-formats">
+					<button class="ql-script" value="sub"></button>
+					<button class="ql-script" value="super"></button>
+					</span>
+					<span class="ql-formats">
+					<button class="ql-header" value="1"></button>
+					<button class="ql-header" value="2"></button>
+					<button class="ql-blockquote"></button>
+					<button class="ql-code-block"></button>
+					</span>
+					<span class="ql-formats">
+					<button class="ql-list" value="ordered"></button>
+					<button class="ql-list" value="bullet"></button>
+					<button class="ql-indent" value="-1"></button>
+					<button class="ql-indent" value="+1"></button>
+					</span>
+					<span class="ql-formats">
+					<button class="ql-direction" value="rtl"></button>
+					<select class="ql-align"></select>
+					</span>
+					<span class="ql-formats">
+					<button class="ql-link"></button>
+					<button class="ql-image"></button>
+					<button class="ql-video"></button>
+					<button class="ql-formula"></button>
+					</span>
+					<span class="ql-formats">
+					<button class="ql-clean"></button>
+					</span>
+                            </div>
+                            <div id="editor-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!--文本编辑器框输入区域-->
+
+        <!--假条提交按钮-->
+        <button type="submit" class="btn btn-default">提交</button>
+
+        <!--假条提交状态-->
+        <span class="glyphicon glyphicon-star pull-right" style="margin-top: 10px" aria-hidden="true">Star</span>
+
+        <!--<input name="zhanghao" type="hidden">-->
+    </form>
+
+    <div>
+        <!--'{$vadata}'-->
+        {switch name="vadata.status" }
+
+
+
+        {case value="0" }
+        <div style="visibility: hidden"><!--无请假情况--></div>
+
+        <div id="pop" style="width: 100%;height:100%; opacity: 0.8; background-color: #00a1b5;visibility: hidden;">
+            <!--<div style=" position:absolute; right:5px; bottom:5px; width:200px; height:30px; background:#000000; color:#FF0000; text-align:center; padding-top:10px; font-weight:bold;">点击关闭</div>-->
+            <a  onclick="deldiv();">你好弹窗</a>
+            <div style="
+    z-index: 999;opacity: 0.3;padding: 10px; position: absolute;width:60%; height: 30%;top: 30%;right: 20%;
+    word-wrap:break-word; text-align: center; border: 1px solid #000;background-color: #FFF;
+    ">
+                <div style="width: 100%;height: 10%;background-color: #00a1b5;font-size:70%;">
+                    <header>请假情况</header>
+                </div>
+                <div style="text-align: center;">
+                    <h3>正在等待班主任批复</h3>
+
+                    <!--<h1>{}正在等待科长批复</h1>-->
+                    <!--<h1>请假以成功</h1>-->
+                    <!--<h2>请假失败</h2>-->
+                    <a class="btn" href="{:url('check/disva')}">取消请假申请</a>
+                </div>
+            </div>
+
+        </div>
+        {/case}
+
+        <div style="visibility: hidden"><!--等待班主任查阅--></div>
+        {case value="1"}
+        <div id="pop" style="width: 100%;height:100%; opacity: 0.8; background-color: #00a1b5;">
+            <!--<div style=" position:absolute; right:5px; bottom:5px; width:200px; height:30px; background:#000000; color:#FF0000; text-align:center; padding-top:10px; font-weight:bold;">点击关闭</div>-->
+            <a  onclick="deldiv();">你好弹窗</a>
+            <div style="
+    z-index: 999;opacity: 0.3;padding: 10px; position: absolute;width:60%; height: 30%;top: 30%;right: 20%;
+    word-wrap:break-word; text-align: center; border: 1px solid #000;background-color: #FFF;
+    ">
+                <div style="width: 100%;height: 10%;background-color: #00a1b5;font-size:70%;">
+                    <header>请假情况</header>
+                </div>
+                <div style="text-align: center;">
+                    <h3>正在等待班主任批复</h3>
+
+                    <!--<h1>{}正在等待科长批复</h1>-->
+                    <!--<h1>请假以成功</h1>-->
+                    <!--<h2>请假失败</h2>-->
+                    <a class="btn btn-default" href="{:url('check/disva')}">取消请假申请</a>
+                </div>
+            </div>
+
+        </div>
+        {/case}
+        <div style="visibility: hidden">   <!--班主任同意，等待科长查阅 ，请假超过当天晚9点--></div>
+
+
+        {case value="2"}
+        <div id="pop" style="width: 100%;height:100%; opacity: 0.8; background-color: #00a1b5;">
+            <!--<div style=" position:absolute; right:5px; bottom:5px; width:200px; height:30px; background:#000000; color:#FF0000; text-align:center; padding-top:10px; font-weight:bold;">点击关闭</div>-->
+            <a  onclick="deldiv();">你好弹窗</a>
+            <div style="
+    z-index: 999;opacity: 0.3;padding: 10px; position: absolute;width:60%; height: 30%;top: 30%;right: 20%;
+    word-wrap:break-word; text-align: center; border: 1px solid #000;background-color: #FFF;
+    ">
+                <div style="width: 100%;height: 10%;background-color: #00a1b5;font-size:70%;">
+                    <header>请假情况</header>
+                </div>
+                <div style="text-align: center;">
+                    <!--<h4>正在等待班主任批复</h4>-->
+                    <h4>班主任已同意：{$vadata['tre']}</h4>
+                    <h4>正在等待科长批复</h4>
+                    <!--<h4>请假以成功</h4>-->
+                    <!--<h4>请假失败</h4>-->
+                    <a class="btn btn-default" href="{:url('check/disva')}">取消请假申请</a>
+                </div>
+            </div>
+
+        </div>
+        {/case}
+        <div style="visibility: hidden"> <!--班主任不同意--></div>
+
+
+        {case value="3"}
+        <div id="pop" style="width: 100%;height:100%; opacity: 0.8; background-color: #00a1b5;">
+            <!--<div style=" position:absolute; right:5px; bottom:5px; width:200px; height:30px; background:#000000; color:#FF0000; text-align:center; padding-top:10px; font-weight:bold;">点击关闭</div>-->
+            <a  onclick="deldiv();">你好弹窗</a>
+            <div style="
+    z-index: 999;opacity: 0.3;padding: 10px; position: absolute;width:60%; height: 30%;top: 30%;right: 20%;
+    word-wrap:break-word; text-align: center; border: 1px solid #000;background-color: #FFF;
+    ">
+                <div style="width: 100%;height: 10%;background-color: #00a1b5;font-size:70%;">
+                    <header>请假情况</header>
+                </div>
+                <div style="text-align: center;">
+                    <h4>班主任不同意</h4>
+                    <h4>班主任意见：{$vadata['tre']}</h4>
+                    <!--<h4>正在等待科长批复</h4>-->
+                    <!--<h4>科长意见：{$vadata['chre']}</h4>-->
+                    <a class="btn btn-default" href="{:url('check/disva')}">取消请假申请</a>
+                </div>
+            </div>
+
+        </div>
+        {/case}
+        <div style="visibility: hidden"><!--班主任同意，请假时间不超过当天晚9点，班主任直批--></div>
+
+
+        {case value="4"}
+        <div id="pop" style="width: 100%;height:100%; opacity: 0.8; background-color: #00a1b5;">
+            <!--<div style=" position:absolute; right:5px; bottom:5px; width:200px; height:30px; background:#000000; color:#FF0000; text-align:center; padding-top:10px; font-weight:bold;">点击关闭</div>-->
+            <a  onclick="deldiv();">你好弹窗</a>
+            <div style="
+    z-index: 999;opacity: 0.3;padding: 10px; position: absolute;width:60%; height: 30%;top: 30%;right: 20%;
+    word-wrap:break-word; text-align: center; border: 1px solid #000;background-color: #FFF;
+    ">
+                <div style="width: 100%;height: 10%;background-color: #00a1b5;font-size:70%;">
+                    <header>请假情况</header>
+                </div>
+                <div style="text-align: center;">
+                    <h1>请假成功</h1>
+                    <h4>班主任已同意!</h4>
+                    <!--<h4>等待科长查阅：</h4>-->
+                    <!--<h4>请假没有通过</h4>-->
+                    <!--<h4>科长意见：</h4>-->
+                    <h4>班主任意见：{$vadata['tre']}</h4>
+                    <a class="btn btn-default" href="{:url('check/disva')}">取消请假申请</a>
+                </div>
+            </div>
+
+        </div>
+        {/case}
+        <div style="visibility: hidden"><!--科长不同意--></div>
+
+
+        {case value="5"}
+        <div id="pop" style="width: 100%;height:100%; opacity: 0.8; background-color: #00a1b5;">
+            <!--<div style=" position:absolute; right:5px; bottom:5px; width:200px; height:30px; background:#000000; color:#FF0000; text-align:center; padding-top:10px; font-weight:bold;">点击关闭</div>-->
+            <a  onclick="deldiv();">你好弹窗</a>
+            <div style="
+    z-index: 999;opacity: 0.3;padding: 10px; position: absolute;width:60%; height: 30%;top: 30%;right: 20%;
+    word-wrap:break-word; text-align: center; border: 1px solid #000;background-color: #FFF;
+    ">
+                <div style="width: 100%;height: 10%;background-color: #00a1b5;font-size:70%;">
+                    <header>请假情况</header>
+                </div>
+                <div style="text-align: center;">
+                    <!--<h4>正在等待班主任批复</h4>-->
+                    <h4>请假没有通过</h4>
+                    <h4>班主任已同意</h4>
+                    <h4>科长不同意</h4>
+                    <h4>科长意见：{$vadata['chre']}</h4>
+                    <h4>班主任意见：{$vadata['tre']}</h4>
+                    <a class="btn btn-default" href="{:url('check/disva')}">取消请假申请</a>
+                </div>
+            </div>
+
+        </div>
+        {/case}
+        <div style="visibility: hidden"><!--科长同意，请假成功--></div>
+
+
+        {case value="6"}
+        <div id="pop" style="width: 100%;height:100%; opacity: 0.8; background-color: #00a1b5;">
+            <!--<div style=" position:absolute; right:5px; bottom:5px; width:200px; height:30px; background:#000000; color:#FF0000; text-align:center; padding-top:10px; font-weight:bold;">点击关闭</div>-->
+            <a  onclick="deldiv();">你好弹窗</a>
+            <div style="
+    z-index: 999;opacity: 0.3;padding: 10px; position: absolute;width:60%; height: 30%;top: 30%;right: 20%;
+    word-wrap:break-word; text-align: center; border: 1px solid #000;background-color: #FFF;
+    ">
+                <div style="width: 100%;height: 10%;background-color: #00a1b5;font-size:70%;">
+                    <header>请假情况</header>
+                </div>
+                <div style="text-align: center;">
+                    <!--<h4>正在等待班主任批复</h4>-->
+                    <!--<h4>班主任已同意：</h4>-->
+                    <!--<h4>科长同意：</h4>-->
+                    <h1>请假通过</h1>
+                    <h4>科长意见：{$vadata['chre']}</h4>
+                    <h4>班主任意见：{$vadata['tre']}</h4>
+                    <a class="btn btn-default" href="{:url('check/disva')}">取消请假申请</a>
+                </div>
+            </div>
+
+        </div>
+        {/case}
+        {default /}
+        {/switch}
+    </div>
+
+</div>
+<!--悬浮窗口--  取消下方隐藏样式-->
+<div id="" style="width: 100%;height:100%; opacity: 0.8; background-color: #00a1b5;visibility: hidden;">
+    <!--<div style=" position:absolute; right:5px; bottom:5px; width:200px; height:30px; background:#000000; color:#FF0000; text-align:center; padding-top:10px; font-weight:bold;">点击关闭</div>-->
+    <a  onclick="deldiv();">你好弹窗</a>
+    <div style="
+    z-index: 999;opacity: 0.3;padding: 10px; position: absolute;width:60%; height: 30%;top: 30%;right: 20%;
+    word-wrap:break-word; text-align: center; border: 1px solid #000;background-color: #FFF;
+    ">
+        <div style="width: 100%;height: 10%;background-color: #00a1b5;font-size:70%;">
+            <header>请假情况</header>
+        </div>
+        <div style="text-align: center;">
+            <h3>正在等待班主任批复</h3>
+
+            <!--<h1>{}正在等待科长批复</h1>-->
+            <!--<h1>请假以成功</h1>-->
+            <!--<h2>请假失败</h2>-->
+            <button type="button" class="btn btn-primary btn-lg">取消请假</button>
+        </div>
+    </div>
+
+</div>
+<!--悬浮窗口-->
+{include file="public/button" /}
+<!--文本框加速区域-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>-->
+<!--<script src="__STATIC__/quill/dist/quill.js"></script>-->
+<script>
+    var quill = new Quill('#editor-container', {
+        modules: {
+            formula: true,
+            syntax: true,
+            toolbar: '#toolbar-container'
+        },
+        placeholder: 'Compose an epic...',
+        theme: 'snow'
+    });
+</script>
+<!--文本框加速区域-->
+<!--时间插件脚本-->
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#date').bootstrapMaterialDatePicker
+        ({
+            time: false
+        });
+
+        $('#time').bootstrapMaterialDatePicker
+        ({
+            date: false,
+            shortTime: true,
+            format: 'HH:mm'
+        });
+
+        $('#date-format').bootstrapMaterialDatePicker
+        ({
+            format: 'dddd DD MMMM YYYY - HH:mm'
+        });
+        $('#date-fr').bootstrapMaterialDatePicker
+        ({
+            format: 'DD/MM/YYYY HH:mm',
+            lang: 'fr',
+            weekStart: 1,
+            cancelText: 'ANNULER'
+        });
+
+        $('#date-end').bootstrapMaterialDatePicker
+        ({
+            weekStart: 0, format: 'YYYY-MM-DD HH:mm'
+        });
+        $('#date-start').bootstrapMaterialDatePicker({format: 'YYYY-MM-DD HH:mm', minDate: new Date()});
+        $('#date-start').bootstrapMaterialDatePicker
+        ({
+            weekStart: 0, format: 'YYYY-MM-DD HH:mm'
+        }).on('change', function (e, date) {
+
+            var scon = function (data) {
+                let result = new Date(date).getTime();
+                return result + 5 * 24 * 60 * 60 * 1000;
+            };
+
+            var datime = function (msec) {
+
+                let datetime = new Date(msec);
+                let year = datetime.getFullYear();
+                let month = datetime.getMonth();
+                let date = datetime.getDate();
+                let hour = datetime.getHours();
+                let minute = datetime.getMinutes();
+                let second = datetime.getSeconds();
+
+                let result1 = year +
+                        '-' +
+                        ((month + 1) >= 10 ? (month + 1) : '0' + (month + 1)) +
+                        '-' +
+                        ((date + 1) < 10 ? '0' + date : date) +
+                        ' ' +
+                        ((hour + 1) < 10 ? '0' + hour : hour) +
+                        ':' +
+                        ((minute + 1) < 10 ? '0' + minute : minute) +
+                        ':' +
+                        ((second + 1) < 10 ? '0' + second : second);
+
+                let result2 = year +
+                        '-' +
+                        ((month + 1) >= 10 ? (month + 1) : '0' + (month + 1)) +
+                        '-' +
+                        ((date + 1) < 10 ? '0' + date : date);
+
+                let result = {
+                    hasTime: result1,
+                    withoutTime: result2
+                };
+
+                return result.withoutTime;
+
+            };
+
+            //转标准时间
+            var data3 = function (date) {
+
+                let result = new Date(date);
+                return result;
+
+            };
+//时间跨度5天
+            var a = scon(date);
+            let b = datime(a);
+            let c = data3(b);
+
+            $('#date-end').bootstrapMaterialDatePicker('setMinDate', date);
+            $('#date-end').bootstrapMaterialDatePicker('setMaxDate', c);
+
+        });
+
+        $('#min-date').bootstrapMaterialDatePicker({format: 'DD/MM/YYYY HH:mm', minDate: new Date()});
+
+        $.material.init()
+    });
+</script>
+<!--文本编辑器初始状态-->
+
+<!--弹窗-->
+<script>
+    $(document).ready(function () {
+        showDiv($("#pop"));
+    });
+
+    function showDiv(obj) {
+        $(obj).show();
+        center(obj);
+        $(window).scroll(function () {
+            center(obj);
+        });
+        $(window).resize(function () {
+            center(obj);
+        });
+    }
+
+    function center(obj) {
+        var windowWidth = document.documentElement.clientWidth;
+        var windowHeight = document.documentElement.clientHeight;
+        var popupHeight = $(obj).height();
+        var popupWidth = $(obj).width();
+        $(obj).css({
+            "position": "absolute",
+            "top": (windowHeight - popupHeight) / 2 + $(document).scrollTop(),
+            "left": (windowWidth - popupWidth) / 2
+        });
+    }
+
+//    function deldiv() {
+//        $("#pop").remove();
+//    } //点击删除层；
+</script>
+<!--弹窗-->
+
+</body>
+</html>

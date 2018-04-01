@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>第三方</title>
+    <link href="__STATIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__STATIC__/css/bootstrap-maizi.css" rel="stylesheet">
+    <link href="__STATIC__/css/common.css" rel="stylesheet">
+</head>
+<body>
+<!--顶部导航-->
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!--小屏幕导航按钮和logo-->
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="cindex.html" class="navbar-brand">请假帮</a><span class="nnnn"> nnnnnnn</span>
+            </div>
+            <!--小屏幕导航按钮和logo-->
+
+            <!--导航-->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{:url('loginout/loginout')}">退出</a></li>
+                    <li><a href="#bbs">资助</a></li>
+                    <li><a href="{:url('inform/index')}">个人信息</a></li>
+                    <!--<li><a href="#course">最新课程</a></li>-->
+                    <!--<li><a href="#app">移动APP</a></li>-->
+                    <!--<li><a href="#contact">联系我们</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<!--搜寻区域-->
+<div class="container-fluid " style="margin-top: 20%">
+    <form  class="form-horizontal" action="{:url('Search/index')}" method="post">
+        <div class="form-group ">
+            <div class="col-xs-3" style="margin:5px 0px 0px 0px">
+                <label  class=" control-label">专业</label>
+            </div>
+
+            <div  class="col-xs-9">
+                <select name="zhuanye" class="form-control " id="type1">
+
+                    <option value="">无限制</option>s
+                    {volist name="zhuanye" id="vo"}
+
+                    <option value="{$vo.zhuanye}">{$vo.zhuanye}</option>
+
+                    {/volist}
+                </select>
+            </div>
+
+        </div>
+
+        <div class="form-group ">
+            <div class="col-xs-3" style="margin:5px 0px 0px 0px">
+                <label  class=" control-label">班    级</label>
+            </div>
+
+            <div  class="col-xs-9">
+                <select name="class"id="type" class="form-control " >
+
+                </select>
+            </div>
+
+        </div>
+        <div class="form-group ">
+            <div class="col-xs-3" style="margin:5px 0px 0px 0px">
+                <label  class=" control-label">宿舍</label>
+
+            </div>
+
+            <div  class="col-xs-9">
+                <select name="sushe" size="1" id="selcet1" class="form-control ">
+
+                </select>
+            </div>
+
+        </div>
+        <div class="form-group ">
+            <div class="col-xs-3" style="margin:5px 0px 0px 0px">
+                <label  class=" control-label">住/走</label>
+
+            </div>
+
+            <div  class="col-xs-9">
+                <select name="iswalk" class="form-control ">
+                    <option value="">无限制</option>
+
+                    <option value="0">住宿</option>
+                    <option value="1">走读</option>
+
+                </select>
+            </div>
+
+        </div>
+        <div class="form-group ">
+            <div class="col-xs-3" style="margin:5px 0px 0px 0px">
+                <label  class=" control-label">性别</label>
+
+            </div>
+
+            <div  class="col-xs-9">
+                <select name="sex" class="form-control ">
+                    <option value="">无限制</option>
+                    <option value="1">男</option>
+                    <option value="0">女</option>
+
+                </select>
+            </div>
+
+        </div>
+        <div  class="form-group ">
+            <div class="col-xs-3" style="margin:5px 0px 0px 0px">
+                <label  class=" control-label">请假？</label>
+
+            </div>
+
+            <div  class="col-xs-9">
+                <select name="is_va" class="form-control ">
+                    <option value="">无限制</option>
+
+                    <option value="1">有假</option>
+                    <option value="0">无假</option>
+                    <option value="2">长假</option>
+
+                </select>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">确定</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+<!--搜寻结果区域-->
+<div class="container-fluid " style="margin-bottom: 20%;align-items: center">
+    <table class="table .table-bordered ">
+        <tr>
+            <th>#</th>
+            <th>姓名</th>
+            <th>班级</th>
+            <th>走/住</th>
+
+            <th>宿舍</th>
+            <th>请假</th>
+
+        </tr>
+
+{volist name='stu' id='vo' key='key'}
+        <tr>
+            <td>{$key}</td>
+            <td>{$vo.name}</td>
+            <td>{$vo.class}</td>
+            <td>{$vo.iswalk}</td>
+            <td>{$vo.sushe}</td>
+            <td>{$vo.is_va}</td>
+        </tr>
+{/volist}
+
+
+    </table>
+</div>
+<!--底部导航模板-->
+<div class="main_nav_bottom">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container" align="center" >
+
+            <ul class="nav nav-tabs nav-tabs-justified">
+                <div class="row" align="center">
+                    <div class="col-md-3 col-sm-3 col-xs-3 " align="center"><li><a href="{:url('index/index')}">Bootstrap2</a></li></div>
+
+                    <div class="col-md-3 col-sm-3 col-xs-3 " align="center"><li><a href="{:url('search/index')}">Bootstrap2</a></li></div>
+                    <div class="col-md-3 col-sm-3 col-xs-3 s_3" align="center"><li><a href="{:url('add/index')}">Bootstrap3</a></li></div>
+                    <div class="col-md-3 col-sm-3 col-xs-3 s_4" align="center"><li><a href="{:url('add/index')}">Bootstrap3</a></li></div>
+
+                </div>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<script src="__STATIC__/js/jquery-1.11.0.min.js"></script>
+<script src="__STATIC__/js/butdaohang.js"></script>
+<script src="__STATIC__/js/carousel.js"></script>
+<script src="__STATIC__/js/bootstrap.js"></script>
+
+<!--联动下拉框-->
+<script>
+    var URL="{:url('api/select/deleteMovie')}"
+    var URL1="{:url('api/select/deleteMovie1')}"
+
+</script>
+<!--专业与班级下拉框联动脚本-->
+<script>
+    $('#type1').click(function() {
+
+        $(this).change(function () {
+//                    var objectModel = {};
+            var value = $(this).val();
+//                    var type = $(this).attr('id');
+//                    objectModel[type] = value;
+
+
+            $.ajax({
+                timeout:30000,
+                type: "POST",
+                url: URL1,
+                dataType: "json",
+                data: {movieId: value},
+                success: function (msg) {
+                    if (msg.status == 509) {
+                        $('#type').empty();
+                        var count = msg.data.length;
+                        // alert(count);
+                        var i = 0;
+                        var b="<option value=''>无限制</option>";
+                        for(i=0;i<count;i++){
+                            b+="<option value='"+msg.data[i].class+"'>"+msg.data[i].class+"</option>";
+                        }
+                        $("#type").append(b);
+
+                    } else {
+                        alert('没有检测到相应数据');
+                    }
+
+                },
+                error: function (msg) {
+                    alert('信息获取失败');
+
+
+                }
+
+            })
+        })
+    })
+</script>
+<!--宿舍与班级联动下拉框脚本-->
+<script>
+    $('#type').click(function() {
+
+        $(this).change(function () {
+//                    var objectModel = {};
+                    var value = $(this).val();
+//                    var type = $(this).attr('id');
+//                    objectModel[type] = value;
+
+
+            $.ajax({
+                timeout:30000,
+                type: "POST",
+                url: URL,
+                dataType: "json",
+                data: {movieId: value},
+                success: function (msg) {
+                    if (msg.status == 509) {
+                        $('#selcet1').empty();
+                        var count = msg.data.length;
+                       // alert(count);
+                        var i = 0;
+                        var b="<option value=''>无限制</option>";
+                        for(i=0;i<count;i++){
+                            b+="<option value='"+msg.data[i].sushe+"'>"+msg.data[i].sushe+"</option>";
+                        }
+                        $("#selcet1").append(b);
+
+                    } else {
+                        alert('没有检测到相应数据');
+                    }
+
+                },
+                error: function (msg) {
+                 alert('信息获取失败');
+
+
+                }
+
+            })
+        })
+    })
+</script>
+
+</body>
+</html>

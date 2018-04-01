@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>学生端</title>
+    <link href="__STATIC__/uploadify/uploadify.css" rel="stylesheet">
+    <link href="__STATIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__STATIC__/css/bootstrap-maizi.css" rel="stylesheet">
+    <link href="__STATIC__/css/common.css" rel="stylesheet">
+
+</head>
+<body>
+<!--顶部导航-->
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!--小屏幕导航按钮和logo-->
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="cindex.html" class="navbar-brand">扎职学院</a><span class="nnnn"> nnnnnnn</span>
+            </div>
+            <!--小屏幕导航按钮和logo-->
+
+            <!--导航-->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#bbs">论坛</a></li>
+                    <li><a href="#html5">前端开发</a></li>
+                    <!--<li><a href="#course">最新课程</a></li>-->
+                    <!--<li><a href="#app">移动APP</a></li>-->
+                    <!--<li><a href="#contact">联系我们</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="container-fluid" style="margin-bottom: 20%;margin-top: 20%">
+    <div>
+        <img id="touxiang" style="width: 150px;height: 150px;;border: solid lightblue 1px" src="http://localhost/va_sy2/{$data.photo}">
+    </div>
+    <form action="{:url('api/imageload/uploadimg')}" enctype="multipart/form-data" method="post">
+        <input type="text" name="zhanghao" value="{$data.zhanghao}">
+        <input type="file" name="image" /> <br>
+        <input type="submit" value="上传" />
+    </form>
+
+    <form action="{:url('sinform/edt')}" method="post">
+        <span class="" >修改本人信息</span>
+        <!--<div class="form-group">-->
+        <!--<label >账号</label>-->
+        <!--<input type="email" class="form-control"  placeholder="账号">-->
+        <!--</div>-->
+
+
+
+        <!--<div class="row cl">-->
+        <!--<label class="form-label col-xs-4 col-sm-2">缩略图：</label>-->
+        <!--<div class="formControls col-xs-8 col-sm-9">-->
+        <!--<input id="file_upload" name="file" type="file" multiple="true" >-->
+        <!--<img style="display: none" id="upload_org_code_img" src="" width="150" height="150">-->
+        <!--<input id="file_upload_image" name="logo" type="hidden" multiple="true" value="">-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <div class="form-group">
+            <label >姓名</label>
+            <input type="text"name="name" class="form-control" value="{$data.name}" placeholder={$data.name}>
+        </div>
+        <div class="form-group">
+            <label >电话</label>
+            <input type="text" class="form-control" name="phone" placeholder="{$data.phone}">
+        </div>
+        <div class="form-group">
+            <label >微信</label>
+            <input type=text" class="form-control" name="weixinname"  placeholder="{$data.weixinname}">
+        </div>
+
+
+        <div class="form-group">
+            <label >密码</label>
+            <input type="text" class="form-control"  name="pwd" placeholder="">
+        </div>
+        <input type=text" class="form-control" value="{$data.zhanghao}" name="zhanghao" placeholder="{$data.zhanghao}">
+
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+
+<!--底部导航模板-->
+{include file="public/button"/}
+
+
+  <!--var  PUBLIC='__STATIC__/uploadify/uploadify.swf';-->
+     <!--var uploadURL="{:url('api@image/upload')}";-->
+<!--</script>-->
+
+<!--<script src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>-->
+<!--<script src="__STATIC__/uploadify/image.js"></script>-->
+<!--<script>-->
+    <!--$("#file_upload").uploadify({-->
+        <!--'swf'             : PUBLIC,-->
+        <!--'uploader'        : uploadURL,-->
+        <!--'buttonText' : '图片上传',-->
+        <!--'fileTypeDesc'      :'Image files',-->
+        <!--'fileObjName'      :'file',-->
+        <!--'fileTypeExts'     :'*.gif; *.jpg; *.png',-->
+        <!--'fileSizeLimit' : "1MB",-->
+        <!--'multi': false,-->
+
+        <!--'scriptAccess' : 'always',-->
+        <!--'onUploadSuccess' : function(file, data, response) {-->
+            <!--alert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);-->
+            <!--if (response){-->
+
+                <!--console.log(file);-->
+                <!--console.log(data);-->
+                <!--console.log(response);-->
+                <!--var  obj=JSON.parse(data);-->
+                <!--$("#upload_org_code_img").attr("src",obj.data);-->
+                <!--$("#file_upload_image").attr("value",obj.data);-->
+                <!--$("#upload_org_code_img").show();-->
+
+
+            <!--}-->
+        <!--}-->
+
+
+    <!--});-->
+<!--</script>-->
+<script>
+  var url=' http://localhost/va_sy2'+"/{$data.photo}";
+// var url='__PUBLIC__'+"/{$data.photo}"
+
+
+</script>
+<script>
+    window.onload = function(){
+        alert(url);
+
+        $('#touxiang').attr('src',url);
+    };
+</script>
+</body>
+</html>

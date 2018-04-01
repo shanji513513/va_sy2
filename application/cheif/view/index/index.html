@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>学生科</title>
+    <link href="__STATIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__STATIC__/css/bootstrap-maizi.css" rel="stylesheet">
+    <link href="__STATIC__/css/common.css" rel="stylesheet">
+</head>
+<body>
+<!--顶部导航-->
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!--小屏幕导航按钮和logo-->
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="cindex.html" class="navbar-brand">请假帮</a><span class="nnnn"> nnnnnnn</span>
+            </div>
+            <!--小屏幕导航按钮和logo-->
+
+            <!--导航-->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    {include file="public/top"/}
+                    <!--<li><a href="#course">最新课程</a></li>-->
+                    <!--<li><a href="#app">移动APP</a></li>-->
+                    <!--<li><a href="#contact">联系我们</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--大屏轮播-->
+<div style="margin-bottom: 10px" id="slidershow" class="carousel slide " data-ride="carousel">
+    <!-- 设置图片轮播的顺序 -->
+    <ol class="carousel-indicators">
+        <li class="active" data-target="#slidershow" data-slide-to="0"></li>
+        <li data-target="#slidershow" data-slide-to="1"></li>
+        <li data-target="#slidershow" data-slide-to="2"></li>
+    </ol>
+    <!-- 设置轮播图片 -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <a href="##"><img style="height: 200px;width: 300px"></a>
+            <div class="carousel-caption">
+                <h3>图片标题1</h3>
+                <p>描述内容1...</p>
+            </div>
+        </div>
+        <div class="item">
+            <a href="##"><img style="height: 200px;width: 300px"></a>
+            <div class="carousel-caption">
+                <h3>图片标题2</h3>
+                <p>描述内容2...</p>
+            </div>
+        </div>
+        <div class="item">
+            <a href="##"><img style="height: 200px;width: 300px"></a>
+            <div class="carousel-caption">
+                <h3>图片标题3</h3>
+                <p>描述内容3...</p>
+            </div>
+        </div>
+    </div>
+    <!-- 设置轮播图片控制器 -->
+    <a class="left carousel-control" href="#slidershow" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#slidershow" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
+
+<!--主任批假页面-->
+<div class="container-fluid " style="margin-bottom: 20%" >
+    {volist name='vadata' id='va'}
+
+    <div class="row" style="border:2px solid;">
+        <div class="col-xs-12" style="margin-bottom: 2px">
+            <table border="1" class="table-bordered table">
+                <tr>
+                    <th>姓名</th>
+                    <th>班级</th>
+                    <th>起始</th>
+                    <th>结束</th>
+                </tr>
+                <tr>
+                    <td>{$va.name}</td>
+                    <td>{$va.class}</td>
+                    <td>{$va.vastime}</td>
+                    <td>{$va.vaetime}</td>
+                </tr>
+            </table>
+
+            <div class="row" >
+                <div class="col-xs-12" style="margin-top: 2px">
+                    <table border="1" class="table-bordered table">
+                        <tr>
+                            <th>请假缘由</th>
+                        </tr>
+                        <tr>
+                            <td>{$va.vadetail}</td>
+                        </tr>
+                        <tr>
+                            <th>班主任意见</th>
+                        </tr>
+                        <tr>
+                            <td>{$va.tre}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <form action="" name="form" method="post">
+                            <label>反馈意见</label>
+                            <input type="text" class="form-control" name="chre" placeholder="审批意见">
+                            <input type="text" name="id" value="{$va.stid}">
+                            <button type="submit" class="btn btn-link" onclick="guihuan()">同意</button>
+                            <!--<a href="{:url('Vaop/disagree')}" class="btn btn-link">拒绝</a>-->
+                            <button type="submit" class="btn btn-danger" onclick="baosun()" >拒绝</button>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {/volist}
+
+
+
+</div>
+
+{include file="public/button"/}
+
+
+
+
+</body>
+
+<!--双按钮提交-->
+<script type="text/javascript">
+    function guihuan()
+    {
+        document.form.action="{:url('Vaop/agree')}";
+    }
+    function baosun()
+    {
+        document.form.action="{:url('Vaop/disagree')}";
+    }
+</script>
+
+<!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>-->
+
+<!--<script src="__STATIC__/js/butdaohang.js"></script>-->
+
+<!--<script src="__STATIC__/js/carousel.js"></script>-->
+<!--<script src="__STATIC__/js/bootstrap.js"></script>-->
+
+<!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>-->
+</body>
+</html>

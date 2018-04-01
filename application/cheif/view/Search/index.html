@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>学生科</title>
+    <link href="__STATIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__STATIC__/css/bootstrap-maizi.css" rel="stylesheet">
+    <link href="__STATIC__/css/common.css" rel="stylesheet">
+</head>
+<body>
+<!--顶部导航-->
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!--小屏幕导航按钮和logo-->
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="cindex.html" class="navbar-brand">请假帮</a><span class="nnnn"> nnnnnnn</span>
+            </div>
+            <!--小屏幕导航按钮和logo-->
+
+            <!--导航-->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{:url('loginout/loginout')}">退出</a></li>
+                    <li><a href="#bbs">资助</a></li>
+                    <li><a href="{:url('inform/index')}">个人信息</a></li>
+                    <!--<li><a href="#course">最新课程</a></li>-->
+                    <!--<li><a href="#app">移动APP</a></li>-->
+                    <!--<li><a href="#contact">联系我们</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<!--搜寻区域-->
+<div class="container-fluid " style="margin-top: 20%">
+    <form  class="form-horizontal" action="{:url('Search/index')}" method="post">
+        <div class="form-group ">
+            <div class="col-xs-3" style="margin:5px 0px 0px 0px">
+                <label  class=" control-label">班    级</label>
+
+            </div>
+
+            <div  class="col-xs-9">
+                <select name="class" class="form-control " id="type">
+
+                    <option value="">无限制</option>s
+                    {volist name="data" id="vo"}
+
+                    <option value="{$vo.class}">{$vo.class}</option>
+
+                    {/volist}
+                </select>
+            </div>
+
+        </div>
+        <div class="form-group ">
+            <div class="col-xs-3" style="margin:5px 0px 0px 0px">
+                <label  class=" control-label">宿舍</label>
+
+            </div>
+
+            <div  class="col-xs-9">
+                <select name="sushe" style="1" id="selcet1" class="form-control ">
+
+                </select>
+            </div>
+
+        </div>
+        <div class="form-group ">
+            <div class="col-xs-3" style="margin:5px 0px 0px 0px">
+                <label  class=" control-label">性别</label>
+
+            </div>
+
+            <div  class="col-xs-9">
+                <select name="sex" class="form-control ">
+                    <option value="">无限制</option>
+                    <option value="1">男</option>
+                    <option value="0">女</option>
+
+                </select>
+            </div>
+
+        </div>
+<div  class="form-group ">
+    <div class="col-xs-3" style="margin:5px 0px 0px 0px">
+        <label  class=" control-label">请假？</label>
+
+    </div>
+
+    <div  class="col-xs-9">
+        <select name="is_va" class="form-control ">
+            <option value="">无限制</option>
+
+            <option value="1">有假</option>
+            <option value="0">无假</option>
+            <option value="2">长假</option>
+
+
+        </select>
+    </div>
+
+</div>
+</div>
+<div  class="form-group ">
+    <div class="col-xs-3" style="margin:5px 0px 0px 0px">
+        <label  class=" control-label">住/走</label>
+
+    </div>
+
+    <div  class="col-xs-9">
+        <select name="iswalk" class="form-control ">
+
+            <option value="">无限制</option>
+
+            <option value="0">住宿</option>
+            <option value="1">走读</option>
+
+
+
+        </select>
+    </div>
+
+</div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">确定</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+<!--搜寻结果区域-->
+<div class="container-fluid " style="margin-bottom: 10%;align-items: center">
+    <table class="table .table-bordered ">
+        <tr>
+            <th>#</th>
+            <th>姓名</th>
+            <th>班级</th>
+            <th>宿舍</th>
+            <th>请假</th>
+            <th>详情</th>
+        </tr>
+
+            {volist name="stu" id="vo"}
+        <tr>
+            <td>{$vo.photo}</td>
+            <td>{$vo.name}</td>
+            <td>{$vo.class}</td>
+            <td>{$vo.sushe}</td>
+            <td>{$vo.is_va}</td>
+            <td><a href="{$vo.id}">详情</a></td>
+        </tr>
+{/volist}
+
+
+    </table>
+</div>
+{include file="public/button"/}
+<!--&lt;!&ndash;底部导航模板&ndash;&gt;-->
+<!--<div class="main_nav_bottom">-->
+    <!--<nav class="navbar navbar-default navbar-fixed-bottom">-->
+        <!--<div class="container" align="center" >-->
+
+            <!--<ul class="nav nav-tabs nav-tabs-justified">-->
+                <!--<div class="row" align="center">-->
+                    <!--<div class="col-md-3 col-sm-3 col-xs-3 " align="center"><li><a href="{:url('index/index')}"></a>详情</li></div>-->
+
+                    <!--<div class="col-md-3 col-sm-3 col-xs-3 " align="center"><li><a href="{:url('search/index')}">搜索</a></li></div>-->
+                    <!--<div class="col-md-3 col-sm-3 col-xs-3 s_3" align="center"><li><a href="{:url('add/index')}">添加</a></li></div>-->
+                    <!--<div class="col-md-3 col-sm-3 col-xs-3 s_4" align="center"><li><a href="{:url('Note/index')}">开发中</a></li></div>-->
+
+                <!--</div>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</nav>-->
+<!--</div>-->
+
+<!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>-->
+<!--<script src="__STATIC__/js/butdaohang.js"></script>-->
+<!--<script src="__STATIC__/js/carousel.js"></script>-->
+<!--<script src="__STATIC__/js/bootstrap.js"></script>-->
+
+<!--联动下拉框-->
+<script>
+    var URL="{:url('api/select/deleteMovie')}"
+</script>
+<script>
+    $('#type').click(function() {
+
+        $(this).change(function () {
+//                    var objectModel = {};
+                    var value = $(this).val();
+//                    var type = $(this).attr('id');
+//                    objectModel[type] = value;
+
+
+            $.ajax({
+                timeout:30000,
+                type: "POST",
+                url: URL,
+                dataType: "json",
+                data: {movieId: value},
+                success: function (msg) {
+                    if (msg.status == 509) {
+                        $('#selcet1').empty();
+                        var count = msg.data.length;
+                       // alert(count);
+                        var i = 0;
+                        var b="<option value=''>无限制</option>";
+                        for(i=0;i<count;i++){
+                            b+="<option value='"+msg.data[i].sushe+"'>"+msg.data[i].sushe+"</option>";
+                        }
+                        $("#selcet1").append(b);
+
+                    } else {
+                        alert('没有检测到相应数据');
+                    }
+
+                },
+                error: function (msg) {
+                 alert('信息获取失败');
+
+
+                }
+
+            })
+        })
+    })
+</script>
+
+</body>
+</html>

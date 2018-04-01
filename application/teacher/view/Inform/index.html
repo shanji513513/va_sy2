@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>教师端</title>
+    <link href="__STATIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__STATIC__/css/bootstrap-maizi.css" rel="stylesheet">
+    <link href="__STATIC__/css/common.css" rel="stylesheet">
+</head>
+<body>
+<!--顶部导航-->
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!--小屏幕导航按钮和logo-->
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="cindex.html" class="navbar-brand">扎职学院</a><span class="nnnn"> </span>
+            </div>
+            <!--小屏幕导航按钮和logo-->
+
+            <!--导航-->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    {include file="public/top"/}
+
+                    <!--<li><a href="#course">最新课程</a></li>-->
+                    <!--<li><a href="#app">移动APP</a></li>-->
+                    <!--<li><a href="#contact">联系我们</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--大屏轮播-->
+<div style="margin-bottom: 10px" id="slidershow" class="carousel slide " data-ride="carousel">
+    <!-- 设置图片轮播的顺序 -->
+    <ol class="carousel-indicators">
+        <li class="active" data-target="#slidershow" data-slide-to="0"></li>
+        <li data-target="#slidershow" data-slide-to="1"></li>
+        <li data-target="#slidershow" data-slide-to="2"></li>
+    </ol>
+    <!-- 设置轮播图片 -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <a href="##"><img style="height: 200px;width: 300px"></a>
+            <div class="carousel-caption">
+                <h3>图片标题1</h3>
+                <p>描述内容1...</p>
+            </div>
+        </div>
+        <div class="item">
+            <a href="##"><img style="height: 200px;width: 300px"></a>
+            <div class="carousel-caption">
+                <h3>图片标题2</h3>
+                <p>描述内容2...</p>
+            </div>
+        </div>
+        <div class="item">
+            <a href="##"><img style="height: 200px;width: 300px"></a>
+            <div class="carousel-caption">
+                <h3>图片标题3</h3>
+                <p>描述内容3...</p>
+            </div>
+        </div>
+    </div>
+    <!-- 设置轮播图片控制器 -->
+    <a class="left carousel-control" href="#slidershow" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#slidershow" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
+
+
+
+
+<!--修改信息-->
+<div class="container-fluid " style="margin-bottom: 50px; margin-top: 50px">
+
+    <form action="{:url('inform/edt')}" method="post">
+        <span class="" >修改本人信息</span>
+        <div class="form-group">
+            <!--<label >账号</label>-->
+            <input type="hidden" name="zhanghao"  class="form-control"  value="{$tdata->zhanghao}">
+        </div>
+        <div class="form-group">
+            <label >姓名</label>
+            <input name="name" type="text" class="form-control"  placeholder="{$tdata->name}">
+        </div>
+        <div class="form-group">
+            <label >班级名称</label>
+            <input name="class" type="text" class="form-control"  placeholder="{$tdata->class}">
+        </div>
+        <div class="form-group">
+            <label >电话</label>
+            <input name="phone" type="text" class="form-control"  placeholder="{$tdata->phone}">
+        </div>
+        <div class="form-group">
+            <label >密码</label>
+            <input  name="pwd" type="text" class="form-control"  placeholder="必须填写">
+        </div>
+
+        <button type="submit" class="btn btn-default">确定</button>
+    </form>
+</div>
+
+
+
+<!--底部导航模板-->
+
+
+{include file="public/button"/}
+
+
+
+
+
+
+
+<script src="__STATIC__/js/jquery-1.11.0.min.js"></script>
+
+<script src="__STATIC__/js/butdaohang.js"></script>
+
+
+<script src="__STATIC__/js/carousel.js"></script>
+<script src="__STATIC__/js/bootstrap.js"></script>
+</body>
+</html>

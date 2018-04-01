@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>教师端</title>
+    <link href="__STATIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__STATIC__/css/bootstrap-maizi.css" rel="stylesheet">
+    <link href="__STATIC__/css/common.css" rel="stylesheet">
+</head>
+<body>
+<!--顶部导航-->
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!--小屏幕导航按钮和logo-->
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="cindex.html" class="navbar-brand">请假帮</a><span class="nnnn"> nnnnnnn</span>
+            </div>
+            <!--小屏幕导航按钮和logo-->
+
+            <!--导航-->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    {include file="public/top"/}
+                    <!--<li><a href="#course">最新课程</a></li>-->
+                    <!--<li><a href="#app">移动APP</a></li>-->
+                    <!--<li><a href="#contact">联系我们</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container-fluid" style="margin-bottom: 20%;margin-top: 20%">
+    <div>
+        <img style="width: 150px;height: 150px;;border: solid lightblue 1px" src="zz.cn\{$stu.photo}">
+    </div>
+    <form action="{:url('api/imageload/uploadimg')}" enctype="multipart/form-data" method="post">
+        <input type="text" name="zhanghao" value="{$stu.zhanghao}">
+        <input type="file" name="image" /> <br>
+        <input type="submit" value="上传" />
+    </form>
+
+    <form action="{:url('add/edt1')}" method="post">
+        <span class="" >修改本人信息</span>
+
+
+        <div class="form-group">
+            <label >姓名</label>
+            <input type="text" name="name" class="form-control" value="{$stu.name}" placeholder={$stu.name}>
+        </div>
+        <div class="form-group">
+            <label >电话</label>
+            <input type="text" class="form-control" name="phone" placeholder="{$stu.phone}">
+        </div>
+        <div class="form-group">
+            <label >性别</label>
+            <select name="sex" class="form-control" placeholder="{$stu.sex}" >
+                <option value="0">女</option>
+                <option value="1">男</option>
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label >宿舍</label>
+            <input type=text" class="form-control" name="weixinname"  placeholder="{$stu.sushe}">
+        </div>
+        <select name="iswalk" class="form-control">
+            <option value="0">住宿</option>
+            <option value="1">走读</option>
+        </select>
+        <div class="form-group">
+            <label >微信</label>
+            <input type=text" class="form-control" name="weixinname"  placeholder="{$stu.weixinname}">
+        </div>
+
+        <div class="form-group">
+            <label >密码</label>
+            <input type="text" class="form-control"  name="pwd" placeholder="必须填写">
+        </div>
+        <input type=text" class="form-control" value="{$stu.zhanghao}" name="zhanghao" placeholder="{$stu.zhanghao}">
+
+
+        <button type="submit" class="btn btn-default">Submit</button>
+        <!--<a href="{:url('lock')}.?id={$stu.id}" class="btn btn-default">是否锁定信息禁止学生本人修改</a>-->
+        <!--<a href="{:url('dislock')}.?id={$stu.id}" class="btn btn-default">取消锁定</a>-->
+        {switch name="stu.ised"}
+        {case value="0"}<a href="{:url('lock')}.?id={$stu.id}" class="btn btn-default">是否锁定信息禁止学生本人修改</a>{/case}
+
+        {default /} <a href="{:url('dislock')}.?id={$stu.id}" class="btn btn-default">取消信息修改锁定，允许学生修改信息</a>
+            {/switch}
+
+        {switch name="stu.is_va"}
+        {case value="0"} <a href="{:url('longva')}.?id={$stu.id}" class="btn btn-default">标记长假</a>{/case}
+        {case value="1"}<a href="{:url('longva')}.?id={$stu.id}" class="btn btn-default">标记长假{/case}
+        {default /}<a href="{:url('dislongva')}.?id={$stu.id}" class="btn btn-default">取消长假标记
+        {/switch}
+
+    </form>
+</div>
+
+
+<a href="{:url('add/index')}">返回</a>
+
+
+<!-- On cells (`td` or `th`) -->
+
+
+
+</body>
+
+
+
+
+<script src="__STATIC__/js/jquery-1.11.0.min.js"></script>
+
+<script src="__STATIC__/js/butdaohang.js"></script>
+
+<script src="__STATIC__/js/carousel.js"></script>
+<script src="__STATIC__/js/bootstrap.js"></script>
+
+</body>
+</html>

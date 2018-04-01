@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>学生端</title>
+    <!--<link href="__STATIC__/css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="__STATIC__/css/bootstrap.min.css" />
+    <link href="__STATIC__/css/bootstrap-maizi.css" rel="stylesheet">
+    <!--<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="__STATIC__/time/css/material.min.css" />
+    <link href="__STATIC__/css/common.css" rel="stylesheet">
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <link rel="stylesheet" href="__STATIC__/time/css/bootstrap-material-datetimepicker.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/time/css/default.css">
+
+</head>
+<body>
+
+ <table class="table table-bordered">
+
+
+   <tr>
+     <th>住宿人数</th>
+     <th>住宿请假人数</th>
+     <th>住宿请长假人数</th>
+     <th>住宿实际出勤人数</th>
+ </tr>
+     <tr>
+         <td>{$nua}</td>
+         <td>{$nua1}</td>
+         <td>{$nua2}</td>
+         <td>{$nua-$nua1-$nua2}</td>
+     </tr>
+     <tr>
+         <th>走读人数</th>
+         <th>走读请假人数</th>
+         <th>走读请长假人数</th>
+         <th>走读实际出勤人数</th>
+     </tr>
+     <tr>
+         <td>{$nub}</td>
+         <td>{$nub1}</td>
+         <td>{$nub2}</td>
+         <td>{$nub-$nub1-$nub2}</td>
+     </tr>
+     <tr>
+         <td>合计({$nua+$nub})</td>
+         <td>合计({$nu1})</td>
+         <td>合计({$nu2})</td>
+         <td>合计({$nu0})</td>
+     </tr>
+
+ </table>
+     <table class="table table-bordered">
+     <h4 style="text-align: center">人员详情</h4>
+     <tr>
+         <th>id</th>
+         <th>姓名</th>
+         <th>走/住</th>
+         <th>出勤状况</th>
+
+     </tr>
+     {volist name='st' id='vo' key='key'}
+     <tr>
+         <td>{$key}</td>
+         <td>{$vo.name}</td>
+         <td>{switch name="vo.iswalk"}
+             {case value="0"}住宿{/case}
+
+             {default /}走读
+             {/switch}</td>
+
+         <td>{switch name="vo.is_va"}
+             {case value="0"}在校{/case}
+             {case value="1"}请假{/case}
+             {default /}长假
+             {/switch}</td>
+     </tr>
+     {/volist}
+ </table>
+
+<script src="__STATIC__/time/js/jquery-2.1.1.min.js"></script>
+<!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>-->
+<script src="__STATIC__/js/carousel.js"></script>
+<!--<script src="__STATIC__/js/bootstrap.js"></script>-->
+<script type="text/javascript" src="__STATIC__/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="__STATIC__/time/js/bootstrap-material-datetimepicker.js"></script>
+<script type="text/javascript" src="__STATIC__/time/js/material.min.js"></script>
+<script type="text/javascript" src="__STATIC__/time/js/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="__STATIC__/time/js/bootstrap-material-datetimepicker.js"></script>
+<script>
+    //五分钟刷新页面
+    window.onload = function(){
+        setTimeout("location.reload()",300000);
+    }
+</script>
+
+
+
+</body>
+</html>
